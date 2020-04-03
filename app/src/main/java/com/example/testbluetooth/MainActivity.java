@@ -47,7 +47,6 @@ import java.util.UUID;
 
 @TargetApi(21)
 public class MainActivity extends AppCompatActivity {
-    private static final java.util.UUID UUID =null ;
     private BluetoothAdapter mBluetoothAdapter;
     private int REQUEST_ENABLE_BT = 1;
     private Handler mHandler;
@@ -68,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
 
         btn1 = findViewById(R.id.btn1);
         btn2 = findViewById(R.id.btn2);
+
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -95,6 +95,15 @@ public class MainActivity extends AppCompatActivity {
         final BluetoothManager bluetoothManager =
                 (BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE);
         mBluetoothAdapter = bluetoothManager.getAdapter();
+
+
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent toAdvertise = new Intent(MainActivity.this,BroadcastActivity.class);
+                startActivity(toAdvertise);
+            }
+        });
 
     }
     @Override
